@@ -156,9 +156,13 @@ def update_output_container(selected_statistics,input_year):
             y='Automobile_Sales',
             title="Monthly Automobile Sales"
         ))
+    #Y_chart2 = dcc.Graph(figure=px.line(yearly_data,x='Month',
+                       # y='Automobile_Sales',title="Monthly Automobile Sales for the year {}".format(input_year)))
+
 
             # Plot bar chart for average number of vehicles sold during the given year
-        avr_vdata=yearly_data.groupby('Vehicle_Type')['Automobile_Sales'].sum().reset_index() 
+        avr_vdata=yearly_data.groupby('Vehicle_Type')['Automobile_Sales'].mean().reset_index() 
+        #avr_vdata=data.groupby('Vehicle_Type')['Automobile_Sales'].mean().reset_index()
         Y_chart3 = dcc.Graph(figure=px.bar(avr_vdata,
             x='Vehicle_Type',
             y='Automobile_Sales',
